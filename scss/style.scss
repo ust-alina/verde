@@ -21,6 +21,24 @@ $banner_img: calc(((100vw - 1200px) / 2) + 462px );
     to { width: 100%; }
 } 
 
+@keyframes move-light {
+    
+    0% {
+      transform: translateX(-4em) skewX(-45deg);
+    }
+   
+    /* Закончите все действия к этому моменту */
+    20% {
+      transform: translateX(900px) skewX(-45deg);
+    }
+   
+    /* Между 20% и 100% ничего не происходит */
+    100% {
+      transform: translateX(900px) skewX(-45deg);
+    }
+  
+  }
+
 body {
     background: #FFFFFF;
     font-family: 'PT Serif', serif;
@@ -348,19 +366,38 @@ body {
         }
     }
 }
-.btn {
+.blick_btn {
     display: block;
     font-weight: bold;
     font-size: 20px;
     line-height: 150%;
     color: #FFFFFF;
     padding: 20px 33px;
-    max-width: 278px;
+    max-width: 350px;
+    width: 100%;
     background: linear-gradient(97.27deg, #558375 -1.58%, #00FFB1 257.09%);
     box-shadow: 0px 4px 1px #475F57;
     border-radius: 10px;
     text-align: center;
     cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    &:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 100%;
+        width: 24px;
+        height: 100%;
+        background-color: rgba(#fff, 0.8);
+        transform: translateX(-4em) skewX(-45deg);
+        filter: blur;
+        animation: move-light ease-in-out 5s infinite;
+        animation-delay: 2s;
+    }
+    a {
+        color: #FFFFFF;
+    }
     &:hover {
         box-shadow: none;
         transform: translateY(4px);
@@ -370,6 +407,15 @@ body {
     }
     @media (max-width: 480px) {
         font-size: 14px;
+    }
+    .btn {
+        font-size: 20px;
+        @media (max-width: 768px) {
+            font-size: 16px;
+        }
+        @media (max-width: 480px) {
+            font-size: 14px;
+        }
     }
 }
 .footer_social {
@@ -995,6 +1041,23 @@ margin-top: 10px;
                 
             }
         }
+        .blick_btn {
+            max-width: 374px;
+            width: 100%;
+            height: 90px;
+            padding: 0;
+            cursor: pointer;
+            position: relative;
+            .btn {
+                background-color: transparent;
+                color: #fff;
+                text-align: center;
+            }
+            @media (max-width: 480px) {
+                max-width: 100%;
+                height: 60px;
+            }
+        }
         input[type="tel"] {
             background-color: #F2F6FA;
             background-size: 30px 30px;
@@ -1232,9 +1295,17 @@ margin-top: 10px;
                     padding-top: 33px;
                     margin-bottom: 20px;
                 }
-                .btn {
+                .blick_btn {
                     max-width: 100%;
+                    height: 60px;
+                    padding: 0;
+                    line-height: 60px;
+                    .btn {
+                        background-color: transparent;
+                        color: #fff;
+                    }
                 }
+
             }
         }
     }
@@ -1500,7 +1571,7 @@ margin-top: 10px;
 
 .doubts_block_box {
     margin-top: 30px;
-    &>.btn {
+    &>.blick_btn {
         max-width: 100%;
         height: 90px;
         padding: 0;
@@ -1678,9 +1749,21 @@ margin-top: 10px;
             }
             &:nth-child(3) {
                 margin-top: 30px;
-                .btn {
+                .blick_btn {
                     max-width: 100%;
                     width: 100%;
+                    padding: 0;
+                    height: 70px;
+                    line-height: 70px;
+                    .btn {
+                        background-color: transparent;
+                        color: #fff;
+
+                    }
+                    @media (max-width: 600px) {
+                        height: 60px;
+                    line-height: 60px;
+                    }
                 }
             }
         }
@@ -1811,8 +1894,19 @@ margin-top: 10px;
             margin-bottom: 15px;
         }
     }
-    .btn {
+    .blick_btn {
         max-width: 100%;
+        height: 70px;
+        line-height: 70px;
+        padding:0;
+        .btn {
+            background-color: transparent;
+            color: #fff;
+        }
+        @media (max-width: 600px) {
+            height: 60px;
+        line-height: 60px;
+        }
     }
 }
 

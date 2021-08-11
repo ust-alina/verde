@@ -112,6 +112,38 @@ textarea {
     width: 100%;
   }
 }
+@-webkit-keyframes move-light {
+  0% {
+    -webkit-transform: translateX(-4em) skewX(-45deg);
+            transform: translateX(-4em) skewX(-45deg);
+  }
+  /* Закончите все действия к этому моменту */
+  20% {
+    -webkit-transform: translateX(900px) skewX(-45deg);
+            transform: translateX(900px) skewX(-45deg);
+  }
+  /* Между 20% и 100% ничего не происходит */
+  100% {
+    -webkit-transform: translateX(900px) skewX(-45deg);
+            transform: translateX(900px) skewX(-45deg);
+  }
+}
+@keyframes move-light {
+  0% {
+    -webkit-transform: translateX(-4em) skewX(-45deg);
+            transform: translateX(-4em) skewX(-45deg);
+  }
+  /* Закончите все действия к этому моменту */
+  20% {
+    -webkit-transform: translateX(900px) skewX(-45deg);
+            transform: translateX(900px) skewX(-45deg);
+  }
+  /* Между 20% и 100% ничего не происходит */
+  100% {
+    -webkit-transform: translateX(900px) skewX(-45deg);
+            transform: translateX(900px) skewX(-45deg);
+  }
+}
 body {
   background: #FFFFFF;
   font-family: "PT Serif", serif;
@@ -502,34 +534,70 @@ body {
   }
 }
 
-.btn {
+.blick_btn {
   display: block;
   font-weight: bold;
   font-size: 20px;
   line-height: 150%;
   color: #FFFFFF;
   padding: 20px 33px;
-  max-width: 278px;
+  max-width: 350px;
+  width: 100%;
   background: linear-gradient(97.27deg, #558375 -1.58%, #00FFB1 257.09%);
   -webkit-box-shadow: 0px 4px 1px #475F57;
           box-shadow: 0px 4px 1px #475F57;
   border-radius: 10px;
   text-align: center;
   cursor: pointer;
+  position: relative;
+  overflow: hidden;
 }
-.btn:hover {
+.blick_btn:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 100%;
+  width: 24px;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.8);
+  -webkit-transform: translateX(-4em) skewX(-45deg);
+          transform: translateX(-4em) skewX(-45deg);
+  -webkit-filter: blur;
+          filter: blur;
+  -webkit-animation: move-light ease-in-out 5s infinite;
+          animation: move-light ease-in-out 5s infinite;
+  -webkit-animation-delay: 2s;
+          animation-delay: 2s;
+}
+.blick_btn a {
+  color: #FFFFFF;
+}
+.blick_btn:hover {
   -webkit-box-shadow: none;
           box-shadow: none;
   -webkit-transform: translateY(4px);
           transform: translateY(4px);
 }
 @media (max-width: 768px) {
-  .btn {
+  .blick_btn {
     font-size: 16px;
   }
 }
 @media (max-width: 480px) {
-  .btn {
+  .blick_btn {
+    font-size: 14px;
+  }
+}
+.blick_btn .btn {
+  font-size: 20px;
+}
+@media (max-width: 768px) {
+  .blick_btn .btn {
+    font-size: 16px;
+  }
+}
+@media (max-width: 480px) {
+  .blick_btn .btn {
     font-size: 14px;
   }
 }
@@ -1271,6 +1339,25 @@ textarea {
     height: 60px;
   }
 }
+.verde_bid_form .form_row .blick_btn {
+  max-width: 374px;
+  width: 100%;
+  height: 90px;
+  padding: 0;
+  cursor: pointer;
+  position: relative;
+}
+.verde_bid_form .form_row .blick_btn .btn {
+  background-color: transparent;
+  color: #fff;
+  text-align: center;
+}
+@media (max-width: 480px) {
+  .verde_bid_form .form_row .blick_btn {
+    max-width: 100%;
+    height: 60px;
+  }
+}
 .verde_bid_form .form_row input[type=tel] {
   background-color: #F2F6FA;
   background-size: 30px 30px;
@@ -1537,8 +1624,15 @@ textarea {
   padding-top: 33px;
   margin-bottom: 20px;
 }
-.verde_que_container .verde_que_block_2 .verde_que_form_container .verde_que_form .btn {
+.verde_que_container .verde_que_block_2 .verde_que_form_container .verde_que_form .blick_btn {
   max-width: 100%;
+  height: 60px;
+  padding: 0;
+  line-height: 60px;
+}
+.verde_que_container .verde_que_block_2 .verde_que_form_container .verde_que_form .blick_btn .btn {
+  background-color: transparent;
+  color: #fff;
 }
 
 /*-------------------ГАЛЕРЕЯ---------------------------*/
@@ -1849,7 +1943,7 @@ textarea {
 .doubts_block_box {
   margin-top: 30px;
 }
-.doubts_block_box > .btn {
+.doubts_block_box > .blick_btn {
   max-width: 100%;
   height: 90px;
   padding: 0;
@@ -1857,7 +1951,7 @@ textarea {
   margin-bottom: 48px;
 }
 @media (max-width: 480px) {
-  .doubts_block_box > .btn {
+  .doubts_block_box > .blick_btn {
     height: 60px;
     line-height: 60px;
   }
@@ -2061,9 +2155,22 @@ textarea {
 .visual .visual_form .visual_form_row:nth-child(3) {
   margin-top: 30px;
 }
-.visual .visual_form .visual_form_row:nth-child(3) .btn {
+.visual .visual_form .visual_form_row:nth-child(3) .blick_btn {
   max-width: 100%;
   width: 100%;
+  padding: 0;
+  height: 70px;
+  line-height: 70px;
+}
+.visual .visual_form .visual_form_row:nth-child(3) .blick_btn .btn {
+  background-color: transparent;
+  color: #fff;
+}
+@media (max-width: 600px) {
+  .visual .visual_form .visual_form_row:nth-child(3) .blick_btn {
+    height: 60px;
+    line-height: 60px;
+  }
 }
 
 /*------------------САМЫЙ НИЖНИЙ БЛОК---------------------*/
@@ -2223,8 +2330,21 @@ textarea {
     margin-bottom: 15px;
   }
 }
-.see_block_form .btn {
+.see_block_form .blick_btn {
   max-width: 100%;
+  height: 70px;
+  line-height: 70px;
+  padding: 0;
+}
+.see_block_form .blick_btn .btn {
+  background-color: transparent;
+  color: #fff;
+}
+@media (max-width: 600px) {
+  .see_block_form .blick_btn {
+    height: 60px;
+    line-height: 60px;
+  }
 }
 
 /*---------------ВСПЛЫВАЮЩАЯ ФОРМА---------------------*/
